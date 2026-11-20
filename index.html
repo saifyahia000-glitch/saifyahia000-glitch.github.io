@@ -4,94 +4,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Saif | Network Engineering &amp; Cybersecurity</title>
-<meta name="description" content="Portfolio of Saif, a Network Services and Cybersecurity student: networking labs, WAN projects, Linux infrastructure, reports and automation.">
+<meta name="description" content="SAIF.DEV: interactive network labs with a simulated CLI, WAN practical works, reports, videos and projects by a Network Services and Cybersecurity student.">
 <meta name="theme-color" content="#080B12">
 <link rel="canonical" href="https://saifyahia000-glitch.github.io/">
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
 <meta property="og:title" content="Saif | Network Engineering &amp; Cybersecurity">
-<meta property="og:description" content="Networking labs, WAN projects, Linux infrastructure and automation.">
+<meta property="og:description" content="Interactive network labs, WAN practical works, reports and videos.">
 <meta property="og:url" content="https://saifyahia000-glitch.github.io/">
-<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="nav" id="top">
-  <div class="wrap nav-in">
-    <a class="brand" href="#home" aria-label="SAIF.DEV home">SAIF<span>.DEV</span></a>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i></button>
-    <nav id="menu" aria-label="Main">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#labs">Labs</a><a href="#reports">Reports</a><a href="#videos">Videos</a><a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-<section class="hero" id="home">
-  <canvas id="net" aria-hidden="true"></canvas>
-  <div class="wrap hero-in">
-    <p class="role">Network Services &amp; Cybersecurity student</p>
-    <h1>Building, Securing &amp; Connecting Networks.</h1>
-    <p class="lead">Exploring Network Engineering, Cybersecurity, Linux Infrastructure and Automation through practical projects and technical laboratories.</p>
-    <div class="cta">
-      <a class="btn primary" href="#projects">View my projects</a>
-      <a class="btn" id="cv" href="#" hidden download>Download CV</a>
-      <a class="btn ghost" href="https://github.com/saifyahia000-glitch" target="_blank" rel="noopener">GitHub profile</a>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="sec"><div class="wrap two">
-  <div><h2>About</h2></div>
-  <div class="prose">
-    <p>I'm a student of Network Services and Cybersecurity, working toward a career as a network engineer. I learn by building: designing topologies, configuring them, breaking them and documenting what I find.</p>
-    <p>My work focuses on network infrastructure, routing and switching, firewall configuration, Linux administration, network security and infrastructure automation.</p>
-    <ul class="facts">
-      <li>Network infrastructure</li><li>Routing &amp; switching</li><li>Firewall configuration</li><li>Linux administration</li><li>Network security</li><li>Infrastructure automation</li>
-    </ul>
-  </div>
-</div></section>
-
-<section id="skills" class="sec alt"><div class="wrap">
-  <h2>Technical skills</h2>
-  <div class="grid skills" id="skillGrid"></div>
-</div></section>
-
-<section id="projects" class="sec"><div class="wrap">
-  <h2>Featured projects</h2>
-  <p class="sub">Resources marked “not uploaded yet” are placeholders and become links as soon as the files are added in <code>data.js</code>.</p>
-  <div class="grid projects" id="projectGrid"></div>
-</div></section>
-
-<section id="labs" class="sec alt"><div class="wrap">
-  <h2>Technical labs</h2>
-  <p class="sub">One entry per laboratory. Expand a lab to see its objectives, topology, configuration, results and recordings.</p>
-  <div class="labs" id="labList"></div>
-</div></section>
-
-<section id="reports" class="sec"><div class="wrap">
-  <h2>Reports &amp; documentation</h2>
-  <div class="grid reports" id="reportGrid"></div>
-</div></section>
-
-<section id="videos" class="sec alt"><div class="wrap">
-  <h2>Videos &amp; demonstrations</h2>
-  <p class="sub">Large recordings are hosted on YouTube or Google Drive, not in the repository.</p>
-  <div class="grid videos" id="videoGrid"></div>
-</div></section>
-
-<section id="contact" class="sec"><div class="wrap two">
-  <div><h2>Contact</h2></div>
-  <ul class="contact" id="contactList"></ul>
-</div></section>
-</main>
-
-<footer class="foot"><div class="wrap"><span>© <span id="yr"></span> Saif</span><a href="#top">Back to top</a></div></footer>
-
+<a class="skip" href="#view">Skip to content</a>
+<aside class="side" id="side">
+  <a class="brand" href="#/home">SAIF<span>.DEV</span></a>
+  <nav id="nav" aria-label="Main"></nav>
+  <a class="gh" href="https://github.com/saifyahia000-glitch" target="_blank" rel="noopener">GitHub profile</a>
+</aside>
+<div class="shell">
+  <header class="top">
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="side"><i></i><i></i><i></i></button>
+    <label class="search"><span class="sr">Search this page</span><input id="q" type="search" placeholder="Search labs, reports, videos, projects" autocomplete="off"></label>
+  </header>
+  <main id="view" tabindex="-1"></main>
+  <footer class="foot">© <span id="yr"></span> Saif. CLI terminals on this site are JavaScript simulations, not connections to real devices.</footer>
+</div>
+<dialog id="dlg" aria-label="Video player"><button class="btn" id="dclose" type="button">Close</button><div class="vwrap" id="dbody"></div></dialog>
 <script src="./data.js"></script>
 <script src="./script.js"></script>
 </body>

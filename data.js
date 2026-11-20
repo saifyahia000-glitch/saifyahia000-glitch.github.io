@@ -1,79 +1,74 @@
-/* ============================================================
-   EDIT THIS FILE to add content. Nothing else needs touching.
-   Any field set to null shows a clean "not uploaded yet" placeholder.
-   All local paths are relative to the repository root.
-   ============================================================ */
+/* ===== EDIT THIS FILE to manage all content. =====
+   Paths are relative to the repo root (e.g. "documents/WAN/report.pdf").
+   null = not provided yet; the site shows an honest empty state.
+   LAB STEPS: add one {text, cmd, out, prompt, device} per command, copied from your TP.
+   Never add commands you did not take from your TP documents. */
 window.SITE = {
-  cv: null, // e.g. "documents/Saif-CV.pdf" (button appears only when set)
-
-  skills: {
-    "Networking": ["TCP/IP","VLAN","STP","EtherChannel","Static Routing","OSPF","Network Troubleshooting"],
-    "Security": ["pfSense","Firewall Rules","Network Segmentation","Basic Security Testing"],
-    "Linux & Infrastructure": ["Ubuntu","Bash Scripting","Apache","LDAP","SSH","Docker"],
-    "Virtualization & Labs": ["EVE-NG","GNS3","VMware","VirtualBox","Cisco Packet Tracer"],
-    "Automation": ["n8n","Python","MCP","AI Agents"]
+  cv: null,
+  contact: { github:"https://github.com/saifyahia000-glitch", email:null, linkedin:null },
+  about: {
+    summary:"Student in Network Services and Cybersecurity, working toward a career as a network engineer. I focus on network infrastructure, routing and switching, firewall configuration, Linux administration, network security and infrastructure automation.",
+    education:[{ title:"Network Services and Cybersecurity", detail:"Current student" }]
   },
-
+  skills: {
+    "Networking":["TCP/IP","VLAN","STP","EtherChannel","Static Routing","OSPF","Network Troubleshooting"],
+    "Security":["pfSense","Firewall Rules","Network Segmentation","Basic Security Testing"],
+    "Linux & Infrastructure":["Ubuntu","Bash Scripting","Apache","LDAP","SSH","Docker"],
+    "Virtualization & Labs":["EVE-NG","GNS3","VMware","VirtualBox","Cisco Packet Tracer"],
+    "Automation":["n8n","Python","MCP","AI Agents"]
+  },
   projects: [
-    { title:"WAN Multi-Site Network", status:"Documentation in progress",
-      desc:"Design and implementation of a multi-site WAN network using routing, network segmentation and security mechanisms.",
-      tech:["EVE-NG","pfSense","Static Routing","OSPF","Firewall Rules"],
-      repo:"https://github.com/saifyahia000-glitch/TPS-WAN",
-      image:null, // e.g. "images/projects/wan.png"
-      resources:[
-        {label:"Technical report (PDF)", href:null},
-        {label:"Network topology screenshots", href:null},
-        {label:"Configuration files", href:null},
-        {label:"Demonstration videos", href:null},
-        {label:"Connectivity tests", href:null}
-      ]},
-    { title:"Network Infrastructure & Switching", status:"Documentation in progress",
-      desc:"Layer 2 switching practice: VLAN design, trunking, spanning tree and link aggregation.",
-      tech:["VLAN","STP","EtherChannel","Trunking","Cisco Switching"], repo:null, image:null, resources:[] },
-    { title:"Linux & Network Services", status:"Documentation in progress",
-      desc:"Deploying and configuring core network services on Ubuntu.",
-      tech:["Ubuntu","LDAP","SSH","Apache","Bash"], repo:null, image:null, resources:[] },
-    { title:"AI & Network Automation", status:"Work in progress",
+    { id:"wan", title:"WAN Multi-Site Network", project:"WAN", status:"Documentation in progress",
+      desc:"Design and implementation of a multi-site WAN network using routing, network segmentation and security mechanisms (pfSense and OSPF).",
+      tech:["EVE-NG","pfSense","Static Routing","OSPF","Firewall Rules"], repo:"https://github.com/saifyahia000-glitch/TPS-WAN" },
+    { id:"eve", title:"EVE-NG Network Laboratories", project:"Switching", status:"Documentation in progress",
+      desc:"Network infrastructure and switching practice: VLAN, STP, EtherChannel and trunking on Cisco switching.",
+      tech:["EVE-NG","VLAN","STP","EtherChannel","Trunking"], repo:null },
+    { id:"linux", title:"Linux Administration & Network Services", project:"Linux", status:"Documentation in progress",
+      desc:"Ubuntu administration and network services.",
+      tech:["Ubuntu","LDAP","SSH","Apache","Bash"], repo:null },
+    { id:"auto", title:"Docker & Automation", project:"Automation", status:"Work in progress",
       desc:"Practical work involving AI agents, MCP tools, Python network analysis and n8n automation.",
-      tech:["Python","n8n","MCP","Docker","AI Agents"], repo:null, image:null, resources:[] }
+      tech:["Python","n8n","MCP","Docker","AI Agents"], repo:null },
+    { id:"sec", title:"Network Security", project:"WAN", status:"Work in progress",
+      desc:"Firewall rules, network segmentation and basic security testing.",
+      tech:["pfSense","Firewall Rules","Network Segmentation"], repo:null }
   ],
-
-  /* Copy one block to add a lab. */
+  /* Interactive labs. devices: x,y inside a 600x200 canvas. links: [deviceIdA, deviceIdB]. */
   labs: [
-    { title:"WAN Multi-Site Lab (EVE-NG)",
-      desc:"Multi-site topology connected through routed WAN links with pfSense firewalls.",
-      objectives:["Connect remote sites over a routed WAN","Segment traffic between sites","Apply firewall rules","Verify end-to-end connectivity"],
-      topology:null,            // "images/topology/wan.png"
-      screenshots:[],           // ["images/screenshots/wan-1.png"]
-      commands:null,            // paste configs as a string
-      results:null,             // short text, or null
-      report:null,              // "documents/WAN/wan-report.pdf"
-      video:null                // YouTube ID or full URL
-    },
-    { title:"Switching Lab",
-      desc:"VLANs, trunking, STP and EtherChannel on Cisco switches.",
-      objectives:["Segment a LAN with VLANs","Configure trunks","Observe STP behaviour","Bundle links with EtherChannel"],
-      topology:null, screenshots:[], commands:null, results:null, report:null, video:null }
+    { id:"cli-tutorial", title:"Simulator tutorial: IOS mode navigation", project:"Tutorial", status:"Simulation demo",
+      desc:"Learn how this simulated terminal works using generic IOS mode changes. This lab is a tutorial for the simulator and is not one of my TP results.",
+      tags:["Simulation","CLI basics"], prompt:"Router>",
+      devices:[{id:"r1",name:"Router",x:300,y:100}], links:[],
+      steps:[
+        {text:"Enter privileged mode",cmd:"enable",out:"",prompt:"Router#",device:"r1"},
+        {text:"Enter global configuration mode",cmd:"configure terminal",out:"Enter configuration commands, one per line.  End with CNTL/Z.",prompt:"Router(config)#",device:"r1"},
+        {text:"Set the device hostname",cmd:"hostname R1",out:"",prompt:"R1(config)#",device:"r1"},
+        {text:"Return to privileged mode",cmd:"end",out:"",prompt:"R1#",device:"r1"}
+      ],
+      verify:["After the last step the prompt reads R1#, showing the hostname change took effect."],
+      troubleshoot:["Commands must be typed exactly as shown, in order. Type hint to see the next one."] },
+    { id:"wan-lab", title:"WAN Multi-Site Lab (EVE-NG)", project:"WAN", status:"Awaiting TP commands",
+      desc:"Multi-site topology with routing and pfSense firewalls. The topology and guided commands appear here once added from the TP documents.",
+      tags:["EVE-NG","pfSense","OSPF"], prompt:"Router>", devices:[], links:[], steps:[], verify:[], troubleshoot:[] }
   ],
-
-  /* date: "2026-01-15" or null. file: relative PDF path or null. */
+  /* WAN practical works. Each section: string, array of strings, or null. configs: string or null. */
+  wan: [
+    { id:"wan-multisite", title:"WAN Multi-Site Network",
+      summary:"Multi-site WAN using routing, network segmentation and security mechanisms, built in EVE-NG with pfSense.",
+      repo:"https://github.com/saifyahia000-glitch/TPS-WAN", tech:["EVE-NG","pfSense","Static Routing","OSPF","Firewall Rules"],
+      sections:{ routing:["Static routing","OSPF"], switching:null, protocols:null, configs:null, topology:null, results:null } }
+  ],
   reports: [
-    { title:"WAN Technical Report", desc:"Design, configuration and testing of the multi-site WAN.", date:null, file:null /* "documents/WAN/wan-report.pdf" */ },
-    { title:"Routing Configuration Documentation", desc:"Static routing and OSPF configuration notes.", date:null, file:null },
-    { title:"Switching Laboratory Report", desc:"VLAN, STP and EtherChannel laboratory write-up.", date:null, file:null },
-    { title:"Linux Services Documentation", desc:"Setup notes for Ubuntu network services.", date:null, file:null },
-    { title:"Cybersecurity Practical Work", desc:"Practical security exercises and findings.", date:null, file:null }
+    { title:"WAN Technical Report", project:"WAN", desc:"Design, configuration and testing of the multi-site WAN.", date:null, file:null },
+    { title:"Routing Configuration Documentation", project:"WAN", desc:"Static routing and OSPF configuration notes.", date:null, file:null },
+    { title:"Switching Laboratory Report", project:"Switching", desc:"VLAN, STP and EtherChannel laboratory write-up.", date:null, file:null },
+    { title:"Linux Services Documentation", project:"Linux", desc:"Setup notes for Ubuntu network services.", date:null, file:null },
+    { title:"Cybersecurity Practical Work", project:"Security", desc:"Practical security exercises and findings.", date:null, file:null }
   ],
-
-  /* youtube: video ID or URL; link: any external URL (Drive, etc.). */
+  /* youtube: ID or URL. file: local video path (small files only). link: external URL. */
   videos: [
-    { title:"WAN lab demonstration", desc:"Walkthrough of the multi-site WAN.", youtube:null, link:null },
-    { title:"Switching lab recording", desc:"VLAN and trunk verification.", youtube:null, link:null }
-  ],
-
-  contact: {
-    github:"https://github.com/saifyahia000-glitch",
-    email:null,     // "name@example.com"
-    linkedin:null   // "https://www.linkedin.com/in/your-profile"
-  }
+    { title:"WAN lab demonstration", project:"WAN", desc:"Walkthrough of the multi-site WAN.", youtube:null, file:null, link:null },
+    { title:"Switching lab recording", project:"Switching", desc:"VLAN and trunk verification.", youtube:null, file:null, link:null }
+  ]
 };
