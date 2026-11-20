@@ -4,7 +4,7 @@
    All local paths are relative to the repository root.
    ============================================================ */
 window.SITE = {
-  cv: null, // e.g. "assets/documents/Saif-CV.pdf" (button appears only when set)
+  cv: null, // e.g. "documents/Saif-CV.pdf" (button appears only when set)
 
   skills: {
     "Networking": ["TCP/IP","VLAN","STP","EtherChannel","Static Routing","OSPF","Network Troubleshooting"],
@@ -19,7 +19,7 @@ window.SITE = {
       desc:"Design and implementation of a multi-site WAN network using routing, network segmentation and security mechanisms.",
       tech:["EVE-NG","pfSense","Static Routing","OSPF","Firewall Rules"],
       repo:"https://github.com/saifyahia000-glitch/TPS-WAN",
-      image:null, // e.g. "assets/images/projects/wan.png"
+      image:null, // e.g. "images/projects/wan.png"
       resources:[
         {label:"Technical report (PDF)", href:null},
         {label:"Network topology screenshots", href:null},
@@ -43,11 +43,11 @@ window.SITE = {
     { title:"WAN Multi-Site Lab (EVE-NG)",
       desc:"Multi-site topology connected through routed WAN links with pfSense firewalls.",
       objectives:["Connect remote sites over a routed WAN","Segment traffic between sites","Apply firewall rules","Verify end-to-end connectivity"],
-      topology:null,            // "assets/images/topology/wan.png"
-      screenshots:[],           // ["assets/images/screenshots/wan-1.png"]
+      topology:null,            // "images/topology/wan.png"
+      screenshots:[],           // ["images/screenshots/wan-1.png"]
       commands:null,            // paste configs as a string
       results:null,             // short text, or null
-      report:null,              // "assets/documents/WAN/wan-report.pdf"
+      report:null,              // "documents/WAN/wan-report.pdf"
       video:null                // YouTube ID or full URL
     },
     { title:"Switching Lab",
@@ -58,7 +58,7 @@ window.SITE = {
 
   /* date: "2026-01-15" or null. file: relative PDF path or null. */
   reports: [
-    { title:"WAN Technical Report", desc:"Design, configuration and testing of the multi-site WAN.", date:null, file:null /* "assets/documents/WAN/wan-report.pdf" */ },
+    { title:"WAN Technical Report", desc:"Design, configuration and testing of the multi-site WAN.", date:null, file:null /* "documents/WAN/wan-report.pdf" */ },
     { title:"Routing Configuration Documentation", desc:"Static routing and OSPF configuration notes.", date:null, file:null },
     { title:"Switching Laboratory Report", desc:"VLAN, STP and EtherChannel laboratory write-up.", date:null, file:null },
     { title:"Linux Services Documentation", desc:"Setup notes for Ubuntu network services.", date:null, file:null },
