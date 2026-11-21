@@ -1,74 +1,46 @@
-/* ===== EDIT THIS FILE to manage all content. =====
-   Paths are relative to the repo root (e.g. "documents/WAN/report.pdf").
-   null = not provided yet; the site shows an honest empty state.
-   LAB STEPS: add one {text, cmd, out, prompt, device} per command, copied from your TP.
-   Never add commands you did not take from your TP documents. */
-window.SITE = {
-  cv: null,
-  contact: { github:"https://github.com/saifyahia000-glitch", email:null, linkedin:null },
-  about: {
-    summary:"Student in Network Services and Cybersecurity, working toward a career as a network engineer. I focus on network infrastructure, routing and switching, firewall configuration, Linux administration, network security and infrastructure automation.",
-    education:[{ title:"Network Services and Cybersecurity", detail:"Current student" }]
-  },
-  skills: {
-    "Networking":["TCP/IP","VLAN","STP","EtherChannel","Static Routing","OSPF","Network Troubleshooting"],
-    "Security":["pfSense","Firewall Rules","Network Segmentation","Basic Security Testing"],
-    "Linux & Infrastructure":["Ubuntu","Bash Scripting","Apache","LDAP","SSH","Docker"],
-    "Virtualization & Labs":["EVE-NG","GNS3","VMware","VirtualBox","Cisco Packet Tracer"],
-    "Automation":["n8n","Python","MCP","AI Agents"]
-  },
-  projects: [
-    { id:"wan", title:"WAN Multi-Site Network", project:"WAN", status:"Documentation in progress",
-      desc:"Design and implementation of a multi-site WAN network using routing, network segmentation and security mechanisms (pfSense and OSPF).",
-      tech:["EVE-NG","pfSense","Static Routing","OSPF","Firewall Rules"], repo:"https://github.com/saifyahia000-glitch/TPS-WAN" },
-    { id:"eve", title:"EVE-NG Network Laboratories", project:"Switching", status:"Documentation in progress",
-      desc:"Network infrastructure and switching practice: VLAN, STP, EtherChannel and trunking on Cisco switching.",
-      tech:["EVE-NG","VLAN","STP","EtherChannel","Trunking"], repo:null },
-    { id:"linux", title:"Linux Administration & Network Services", project:"Linux", status:"Documentation in progress",
-      desc:"Ubuntu administration and network services.",
-      tech:["Ubuntu","LDAP","SSH","Apache","Bash"], repo:null },
-    { id:"auto", title:"Docker & Automation", project:"Automation", status:"Work in progress",
-      desc:"Practical work involving AI agents, MCP tools, Python network analysis and n8n automation.",
-      tech:["Python","n8n","MCP","Docker","AI Agents"], repo:null },
-    { id:"sec", title:"Network Security", project:"WAN", status:"Work in progress",
-      desc:"Firewall rules, network segmentation and basic security testing.",
-      tech:["pfSense","Firewall Rules","Network Segmentation"], repo:null }
+/* ============================================================
+   data.js : contenu de la plateforme WAN
+   ------------------------------------------------------------
+   FICHIERS : déposez-les dans  tps/<id>/  (aucune modification de ce fichier nécessaire) :
+     tps/<id>/compte-rendu.pdf   -> compte-rendu (affiché + téléchargeable)
+     tps/<id>/topologie.png      -> capture réelle EVE-NG / Packet Tracer (.png)
+     tps/<id>/config.txt         -> configuration réseau (affichée + téléchargeable)
+   Le site détecte ces fichiers automatiquement.
+
+   TEXTE (à copier depuis vos documents, jamais inventé) :
+     objectives:   ["objectif 1", ...]
+     commands:     [{cmd:"commande exacte", explain:"explication"}]
+     verification: [{cmd:"show ...", result:"sortie réelle", image:"tps/tp1/verif1.png"}]
+     docs:         [{title:"Partie 2", file:"tps/tp1/partie2.pdf", date:"2026-01-15", desc:""}]
+     video:        {youtube:"ID_OU_URL", file:null, link:"https://drive.google.com/..."}
+   ============================================================ */
+(function(){
+function tp(id,folder,label,title,desc,tech){return {id:id,dir:"tps/"+id,folder:folder,label:label,title:title,desc:desc,tech:tech||[],
+  objectives:[],commands:[],verification:[],docs:[],date:null,report:null,topology:null,config:null,video:{youtube:null,file:null,link:null}};}
+window.SITE={
+  tps:[
+    tp("tp1","tp1 partie 1 et 2","TP 1","Sécuriser un routeur (parties 1 et 2)","Sécurisation d'un routeur : OSPF, SSH v2, AAA, NTP, Syslog et TFTP.",["OSPF","SSH v2","AAA","NTP","Syslog","TFTP"]),
+    tp("tp2","TP2","TP 2","MPLS","Travail pratique sur MPLS.",["MPLS"]),
+    tp("tp3","TP3","TP 3","NAT / PAT / DHCP","Traduction d'adresses (NAT, PAT) et attribution dynamique d'adresses (DHCP).",["NAT","PAT","DHCP"]),
+    tp("tp4","TP4","TP 4","TP 4","Titre et description à compléter d'après le document du TP.",[]),
+    tp("tp5","TP5","TP 5","TP 5","Titre et description à compléter d'après le document du TP.",[]),
+    tp("redistribution","Redistribution","TP","Redistribution","Travail pratique sur la redistribution de routes.",["Redistribution"]),
+    tp("lab-redistribution","lab Redistribution","Lab","Lab Redistribution","Laboratoire de redistribution de routes.",["Redistribution"]),
+    tp("lab-bgp","lab bgp","Lab","Lab BGP","Laboratoire sur le protocole BGP.",["BGP"])
   ],
-  /* Interactive labs. devices: x,y inside a 600x200 canvas. links: [deviceIdA, deviceIdB]. */
-  labs: [
-    { id:"cli-tutorial", title:"Simulator tutorial: IOS mode navigation", project:"Tutorial", status:"Simulation demo",
-      desc:"Learn how this simulated terminal works using generic IOS mode changes. This lab is a tutorial for the simulator and is not one of my TP results.",
-      tags:["Simulation","CLI basics"], prompt:"Router>",
-      devices:[{id:"r1",name:"Router",x:300,y:100}], links:[],
-      steps:[
-        {text:"Enter privileged mode",cmd:"enable",out:"",prompt:"Router#",device:"r1"},
-        {text:"Enter global configuration mode",cmd:"configure terminal",out:"Enter configuration commands, one per line.  End with CNTL/Z.",prompt:"Router(config)#",device:"r1"},
-        {text:"Set the device hostname",cmd:"hostname R1",out:"",prompt:"R1(config)#",device:"r1"},
-        {text:"Return to privileged mode",cmd:"end",out:"",prompt:"R1#",device:"r1"}
-      ],
-      verify:["After the last step the prompt reads R1#, showing the hostname change took effect."],
-      troubleshoot:["Commands must be typed exactly as shown, in order. Type hint to see the next one."] },
-    { id:"wan-lab", title:"WAN Multi-Site Lab (EVE-NG)", project:"WAN", status:"Awaiting TP commands",
-      desc:"Multi-site topology with routing and pfSense firewalls. The topology and guided commands appear here once added from the TP documents.",
-      tags:["EVE-NG","pfSense","OSPF"], prompt:"Router>", devices:[], links:[], steps:[], verify:[], troubleshoot:[] }
+  /* Carte de navigation (schéma générique, PAS la topologie d'un laboratoire).
+     tps: liste des TP ouverts en cliquant le routeur. Affectation provisoire : modifiez-la
+     après lecture de vos documents. */
+  devices:[
+    {id:"R1",type:"router",x:150,y:130,tps:["tp1","tp2"]},
+    {id:"R2",type:"router",x:450,y:80,tps:["redistribution","lab-redistribution"]},
+    {id:"R3",type:"router",x:750,y:130,tps:["tp3"]},
+    {id:"R4",type:"router",x:300,y:270,tps:["tp4"]},
+    {id:"R5",type:"router",x:600,y:270,tps:["tp5","lab-bgp"]},
+    {id:"SW1",type:"switch",x:110,y:350,tps:[]},{id:"SW2",type:"switch",x:790,y:350,tps:[]},
+    {id:"PC1",type:"pc",x:50,y:430,tps:[]},{id:"PC2",type:"pc",x:170,y:430,tps:[]},
+    {id:"PC3",type:"pc",x:730,y:430,tps:[]},{id:"PC4",type:"pc",x:850,y:430,tps:[]}
   ],
-  /* WAN practical works. Each section: string, array of strings, or null. configs: string or null. */
-  wan: [
-    { id:"wan-multisite", title:"WAN Multi-Site Network",
-      summary:"Multi-site WAN using routing, network segmentation and security mechanisms, built in EVE-NG with pfSense.",
-      repo:"https://github.com/saifyahia000-glitch/TPS-WAN", tech:["EVE-NG","pfSense","Static Routing","OSPF","Firewall Rules"],
-      sections:{ routing:["Static routing","OSPF"], switching:null, protocols:null, configs:null, topology:null, results:null } }
-  ],
-  reports: [
-    { title:"WAN Technical Report", project:"WAN", desc:"Design, configuration and testing of the multi-site WAN.", date:null, file:null },
-    { title:"Routing Configuration Documentation", project:"WAN", desc:"Static routing and OSPF configuration notes.", date:null, file:null },
-    { title:"Switching Laboratory Report", project:"Switching", desc:"VLAN, STP and EtherChannel laboratory write-up.", date:null, file:null },
-    { title:"Linux Services Documentation", project:"Linux", desc:"Setup notes for Ubuntu network services.", date:null, file:null },
-    { title:"Cybersecurity Practical Work", project:"Security", desc:"Practical security exercises and findings.", date:null, file:null }
-  ],
-  /* youtube: ID or URL. file: local video path (small files only). link: external URL. */
-  videos: [
-    { title:"WAN lab demonstration", project:"WAN", desc:"Walkthrough of the multi-site WAN.", youtube:null, file:null, link:null },
-    { title:"Switching lab recording", project:"Switching", desc:"VLAN and trunk verification.", youtube:null, file:null, link:null }
-  ]
+  links:[["R1","R2"],["R2","R3"],["R1","R4"],["R4","R5"],["R5","R3"],["R2","R4"],["R2","R5"],["R1","SW1"],["SW1","PC1"],["SW1","PC2"],["R3","SW2"],["SW2","PC3"],["SW2","PC4"]]
 };
+})();
